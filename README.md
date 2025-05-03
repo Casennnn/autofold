@@ -45,7 +45,9 @@ This repository contains two Python scripts, `autofolding.py` and `ownstat.py`, 
 
 2. Manually cross out any ads on PokerNow.
 
-3. Enter your commands through the terminal to record your actions and calculate VPIP and PFR.
+3. The program will start running within 10 seconds:
+   - It will automatically fill in details.
+   - Enter your commands through the terminal to record your actions and calculate VPIP and PFR.
 
 
 
