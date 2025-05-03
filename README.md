@@ -49,6 +49,7 @@ This repository contains two Python scripts, `autofolding.py` and `ownstat.py`, 
    - It will automatically fill in details.
    - Enter your commands through the terminal to record your actions and calculate VPIP and PFR.
 
-
+## Update Status
+Please note that these scripts are only updated for use with PokerNow as of May 3, 2025. Future updates are not guaranteed, and users should be aware that changes to the PokerNow platform may affect the functionality of these scripts.
 
    
