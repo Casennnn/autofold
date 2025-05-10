@@ -75,16 +75,21 @@ while True:
 
 
     #check for big blind or not            
-    myblind = driver.find_elements(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span')
+    myblind = driver.find_elements(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span[@class="normal-value"]')
+
+
     #time.sleep(shortwaitingtime)
     smallblind = False
     if myblind == []:
         bigblind = False   #no blinds
-    elif int(myblind[0].text)!=bb:
-        bigblind = False   #I am small blind
-        smallblind = True
     else:
-        bigblind = True
+
+        realpotsize = int(driver.execute_script("return arguments[0].innerHTML;", myblind[0]))
+        if int(realpotsize)!=bb:
+            bigblind = False   #I am small blind
+            smallblind = True
+        else:
+            bigblind = True
         
 
     #check for dealer or not
@@ -176,15 +181,18 @@ while True:
     myturn = driver.find_elements(By.XPATH, "//*[contains(text(), 'Your Turn')]")
     firstraise = True
 
+# //*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[1]/span/span
+# //*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[2]/p/span/span
 
-
+# //*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[2]/p/span/span[2]
     if not bigblind:
-        potsize = int(driver.find_element(By.XPATH,'//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span').text)
+        ele = driver.find_element(By.XPATH,'//*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[2]/p/span/span[@class="normal-value"]')
+        potsize = int(driver.execute_script("return arguments[0].innerHTML;", ele))
         while not myturn and potsize==(sb+bb):
             time.sleep(1)
             myturn = driver.find_elements(By.XPATH, "//*[contains(text(), 'Your Turn')]")
-            potsize = int(driver.find_element(By.XPATH,'//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span').text)
-        potsize = int(driver.find_element(By.XPATH,'//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span').text)
+            potsize = int(driver.execute_script("return arguments[0].innerHTML;", ele))
+        potsize = int(driver.execute_script("return arguments[0].innerHTML;", ele))
         if potsize==(sb+bb):
             firstraise=True
         else:
@@ -292,7 +300,8 @@ while True:
                     while myblind !=[]:
                         time.sleep(1)
                         myblind = driver.find_elements(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span')
-                    realpotsize = int(driver.find_element(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[1]/span/span').text)
+                    ele = driver.find_element(By.XPATH,'//*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[1]/span/span[@class="normal-value"]')
+                    realpotsize = int(driver.execute_script("return arguments[0].innerHTML;", ele))
 
 
                 
@@ -392,8 +401,9 @@ while True:
                     while myblind !=[]:
                         time.sleep(1)
                         myblind = driver.find_elements(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[4]/div[2]/p/span/span')
-                    realpotsize = int(driver.find_element(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[1]/span/span').text)
-                    
+                    # realpotsize = int(driver.find_element(By.XPATH, '//*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[1]/span/span[@class="normal-value"]').text)
+                    ele = driver.find_element(By.XPATH,'//*[@id="canvas"]/div[1]/div[3]/div[4]/div[2]/div[1]/span/span[@class="normal-value"]')
+                    realpotsize = int(driver.execute_script("return arguments[0].innerHTML;", ele))
                     
                     #find folding hands
                     time.sleep(0.5)
