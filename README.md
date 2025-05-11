@@ -1,10 +1,10 @@
 # PokerNow Automation Scripts
 
-This repository contains two Python scripts, `autofolding.py` and `ownstat.py`, designed to automate actions on the PokerNow website.
+This repository contains two Python scripts, `autofold_002.py` and `ownstat.py`, designed to automate actions on the PokerNow website.
 
 ## Files
 
-- **autofolding.py**: Automates the folding of hands that are not playable.
+- **autofold_002.py**: Automates the folding of hands that are not playable.
 - **ownstat.py**: Records your actions and calculates VPIP (Voluntarily Put Money In Pot) and PFR (Pre-Flop Raise).
 
 ## Prerequisites
@@ -22,11 +22,11 @@ This repository contains two Python scripts, `autofolding.py` and `ownstat.py`, 
 
 ## Usage
 
-### autofolding.py
+### autofold_002.py
 
 1. Run the script:
    ```bash
-   python autofolding.py
+   python autofold_002.py
    
 2. Enter the required details when prompted.
 
@@ -41,7 +41,7 @@ This repository contains two Python scripts, `autofolding.py` and `ownstat.py`, 
 
 1. Run the script:
    ```bash
-   python autofolding.py
+   python autofold_002.py
 
 2. Manually cross out any ads on PokerNow.
 
